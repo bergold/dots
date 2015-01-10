@@ -1,0 +1,23 @@
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  position: relative;
+  background-color: #aa4949;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+  dot-color:
+  - fixed: #4F3C0F
+  - orange: #EAAA58
+  - blue: #66B6BE
+  - white: #E6D2C2
+*/

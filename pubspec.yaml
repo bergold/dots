@@ -1,0 +1,10 @@
+name: 'dots'
+version: 0.1.0
+description: >
+  An interactive simulation focusing on the physics of objects
+  in the two-dimensional space.
+homepage: https://bergold.github.io/dots
+environment:
+  sdk: '>=1.0.0 <2.0.0'
+dependencies:
+  browser: any

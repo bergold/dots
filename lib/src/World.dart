@@ -5,7 +5,7 @@ class World {
   List<Dot> objects;
 
   void spawn(Dot d) {
-    objects.push(d);
+    objects.add(d);
   }
 
   void step(num dt) {

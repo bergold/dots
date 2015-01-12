@@ -1,10 +1,11 @@
-library simulation;
+library dots_driver;
 
 import 'dart:html';
 import 'dart:async';
+
 import 'dots.dart';
 
-class Simulation {
+class DotsDriver {
 
   final HtmlElement container;
   World _world;
@@ -14,7 +15,7 @@ class Simulation {
   final StreamController _onSetup = new StreamController();
   Stream get onSetup => _onSetup.stream;
 
-  Simulation(this.container);
+  DotsDriver(this.container);
 
   void run() {
     _world = new World();

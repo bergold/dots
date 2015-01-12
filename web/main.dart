@@ -3,10 +3,10 @@
 
 import 'dart:html';
 
-import 'package:dots/world.dart';
+import 'package:dots/dots_driver.dart';
 
 void main() {
   var elmWorld = querySelector('#world');
-  var world = new World(elmWorld);
+  var world = new DotsDriver(elmWorld);
 
 }

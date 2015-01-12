@@ -1,6 +1,6 @@
 part of dots;
 
-class Dot {
+class Dot extends Body {
 
   /// True if the dot can move, otherwise false.
   final bool isFix;

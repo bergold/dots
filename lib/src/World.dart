@@ -4,12 +4,19 @@ class World {
 
   List<Dot> objects;
 
-  void spawn(Dot d) {
-    objects.add(d);
-  }
+  World() => setup();
+
+  //abstract void setup();
+  void setup();
 
   void step(num dt) {
-    objects.forEach((dot) => dot.step(dt));
+    objects.forEach((body) {
+      body.step(dt);
+      // Process collisions.
+      objects.where((b) => body != b && Collision.isCollision(body, b))
+          .map((b) => new Collision(body, b))
+          .forEach((c) => c.execute());
+    });
   }
 
 }

@@ -2,8 +2,8 @@ library dots;
 
 import 'dart:math';
 
-part 'src/Vector.dart';
-part 'src/Body.dart';
-part 'src/Dot.dart';
-part 'src/World.dart';
-part 'src/Collision.dart';
+part 'src/vector.dart';
+part 'src/world.dart';
+part 'src/collision.dart';
+part 'src/body.dart';
+part 'src/dot.dart';

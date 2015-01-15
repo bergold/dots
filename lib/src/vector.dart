@@ -14,7 +14,7 @@ class Vector {
   }
 
   num get amount => sqrt(x*x + y*y);
-  num get angle => atan(y / x);
+  num get angle => atan(y / x) + (y < 0 ? 180 : 0);
 
   Vector operator + (Vector v) => new Vector(x + v.x, y + v.y);
   Vector operator - (Vector v) => new Vector(x - v.x, y - v.y);

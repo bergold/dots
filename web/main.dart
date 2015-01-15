@@ -3,9 +3,12 @@
 
 import 'dart:html';
 
-import 'package:dots/dots_driver.dart';
+import 'package:dots/dots.dart';
+import 'package:dots/driver.dart';
+import 'package:dots/render.dart';
 
 void main() {
+
   var elmWorld = querySelector('#world');
   var world = new DotsDriver(elmWorld);
 

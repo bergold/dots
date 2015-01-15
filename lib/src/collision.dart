@@ -9,7 +9,10 @@ class Collision {
 
   /// Returns true if the two bodies collide, otherwise false.
   static bool collides(Body body1, Body body2) {
-
+    // ToDo: Check if the bodies collide.
+    //       - do they intersect?
+    //       - do the velocity vectors point against each other?
+    return false;
   }
 
   /// Applies the collision on the bodies.

@@ -10,12 +10,14 @@ abstract class Body {
   Vector v;
   /// The body's acceleration.
   Vector a;
+  /// Should return the radius of the bounding circle.
+  final num radius;
 
-  Body([this.p = const Vector(0, 0),
+  Body(this.radius, [this.p = const Vector(0, 0),
       this.v = const Vector(0, 0),
       this.a = const Vector(0, 0)]) : isFixed = false;
 
-  Body.fixed([this.p = const Vector(0, 0)]) :
+  Body.fixed(this.radius, [this.p = const Vector(0, 0)]) :
       isFixed = true,
       v = const Vector(0, 0),
       a = const Vector(0, 0);
@@ -27,8 +29,5 @@ abstract class Body {
     v = v + a * dt;
     p = p + v * dt;
   }
-
-  /// Should return the radius of the bounding circle.
-  abstract num get radius;
 
 }

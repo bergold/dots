@@ -16,15 +16,12 @@ class DotWorld extends World {
 
 class Dot extends Body {
 
-  /// The dot's radius.
-  final num _radius = 10;
-  num get radius => _radius;
   /// The dot's type.
   final String type;
 
-  Dot(this.type, this._radius, [p, v, a]) : super(p, v, a);
+  Dot(this.type, r, [p, v, a]) : super(r, p, v, a);
 
-  Dot.fixed(this.type, this._radius, [p]) : super.fixed(p);
+  Dot.fixed(this.type, r, [p]) : super.fixed(r, p);
 
 }
 

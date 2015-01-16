@@ -4,7 +4,7 @@ abstract class World {
 
   List<Body> bodies;
 
-  void setup() {};
+  void setup() {}
 
   void reset() {
     bodies.clear();

@@ -10,6 +10,11 @@ class DotWorld extends World {
   @override
   void setup() {
 
+    var test = new Dot('red', 10);
+    test.p = new Vector(width / 2, 0);
+    test.a = new Vector(0, 5);
+    bodies.add(test);
+
   }
 
 }
@@ -19,9 +24,9 @@ class Dot extends Body {
   /// The dot's type.
   final String type;
 
-  Dot(this.type, r, [p, v, a]) : super(r, p, v, a);
+  Dot(this.type, r) : super(r);
 
-  Dot.fixed(this.type, r, [p]) : super.fixed(r, p);
+  Dot.fixed(this.type, r) : super.fixed(r);
 
 }
 

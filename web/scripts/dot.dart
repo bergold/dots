@@ -15,8 +15,6 @@ class DotWorld extends World {
     test.a = new Vector(0, 5);
     bodies.add(test);
 
-    window.console.log("${test.p}, ${test.v}, ${test.a}");
-
   }
 
 }

@@ -37,7 +37,11 @@ class DotRender extends Render {
   DotRender(this.container, w) : super(w);
 
   void render() {
-    print("trigger render");
+    window.console.groupCollapsed("trigger render");
+    world.bodies.forEach((body) {
+      window.console.log("${body.p}, ${body.v}, ${body.a}");
+    });
+    window.console.groupEnd();
   }
 
 }

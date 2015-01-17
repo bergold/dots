@@ -11,7 +11,9 @@ class Driver {
   Render render;
   final World world;
 
-  Driver(this.world);
+  Driver(this.world) {
+    world.setup();
+  }
 
   void start() {
     _running = true;

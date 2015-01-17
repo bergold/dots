@@ -15,10 +15,14 @@ void main() {
   var elmWorld = querySelector('#world');
 
   var world = new DotWorld(500, 300);
-  world.setup();
-  /*var render = new DotRender(elmWorld);
+
+  var render = new DotRender(elmWorld, world);
 
   var driver = new Driver(world);
-  driver.render = render;*/
+  driver.render = render;
+
+  querySelector('#btn1').onClick.listen((e) => driver.start());
+  querySelector('#btn2').onClick.listen((e) => driver.stop());
+  querySelector('#btn3').onClick.listen((e) => driver.reset());
 
 }

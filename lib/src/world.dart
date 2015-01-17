@@ -2,7 +2,7 @@ part of dots;
 
 abstract class World {
 
-  List<Body> bodies;
+  List<Body> bodies = new List<Body>();
 
   void setup() {}
 
@@ -15,7 +15,7 @@ abstract class World {
     bodies.forEach((body) {
       body.step(dt);
       // Process collisions.
-      bod.where((b) => body != b && Collision.collides(body, b))
+      bodies.where((b) => body != b && Collision.collides(body, b))
           .map((b) => new Collision(body, b))
           .forEach((c) => c.execute());
     });

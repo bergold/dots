@@ -7,7 +7,7 @@ class DotWorld extends World {
 
   DotWorld(this.width, this.height);
 
-  @override
+  //@override
   void setup() {
 
     var test = new Dot('red', 10);
@@ -32,8 +32,12 @@ class Dot extends Body {
 
 class DotRender extends Render {
 
-  void render() {
+  final HtmlElement container;
 
+  DotRender(this.container, w) : super(w);
+
+  void render() {
+    print("trigger render");
   }
 
 }

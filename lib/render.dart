@@ -8,7 +8,7 @@ abstract class Render {
 
   Render(this.world);
 
-  abstract void render();
+  void render();
 
 }
 
@@ -20,8 +20,8 @@ abstract class ChangeRender extends Render {
 
   }
 
-  abstract void _add(Body body);
-  abstract void _remove(Body body);
-  abstract void _update(Body body);
+  void _add(Body body);
+  void _remove(Body body);
+  void _update(Body body);
 
 }

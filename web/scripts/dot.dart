@@ -10,10 +10,15 @@ class DotWorld extends World {
   //@override
   void setup() {
 
-    var test = new Dot('red', 10);
-    test.p = new Vector(width / 2, 0);
-    test.a = new Vector(0, 5);
-    bodies.add(test);
+    var testV = new Dot('red', 10);
+    testV.p = new Vector(width / 2, 0);
+    testV.v = new Vector(0, 5);
+    bodies.add(testV);
+
+    var testA = new Dot('red', 10);
+    testA.p = new Vector(width / 2, 0);
+    testA.a = new Vector(0, 5);
+    bodies.add(testA);
 
   }
 

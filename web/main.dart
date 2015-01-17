@@ -14,6 +14,8 @@ part 'scripts/dot.dart';
 void main() {
 
   var elmWorld = querySelector('#world');
+  elmWorld.style.width = '500px';
+  elmWorld.style.height = '300px';
 
   var world = new DotWorld(500, 300);
 

@@ -4,11 +4,11 @@ abstract class Body {
 
   /// True if the body can move, otherwise false.
   final bool isFixed;
-  /// The body's position.
+  /// The body's position [px].
   Vector p;
-  /// The body's velocity.
+  /// The body's velocity [px/s].
   Vector v;
-  /// The body's acceleration.
+  /// The body's acceleration [px/s^2].
   Vector a;
   /// Should return the radius of the bounding circle.
   final num radius;

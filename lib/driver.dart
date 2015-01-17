@@ -34,7 +34,7 @@ class Driver {
 
   void _step() {
     html.window.animationFrame.then((timestamp) {
-      var dt = timestamp - _previoustimestamp;
+      var dt = (timestamp - _previoustimestamp) / 1000;
 
       world.step(dt);
       if (render != null) render.render();

@@ -17,7 +17,7 @@ class DotWorld extends World {
 
     var testA = new Dot('red', 10);
     testA.p = new Vector(width / 2 + 50, 200);
-    testA.v = new Vector(0, -100);
+    testA.v = new Vector(50, -100);
     testA.a = new Vector(0, 100);
     bodies.add(testA);
 

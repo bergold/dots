@@ -26,7 +26,7 @@ void main() {
 
   querySelector('#btn1').onClick.listen((e) => driver.start());
   querySelector('#btn2').onClick.listen((e) => driver.stop());
-  querySelector('#btn3').onClick.listen((e) => driver.reset());
+  querySelector('#btn3').onClick.listen((e) => world.reset());
   querySelector('#btn4').onClick.listen((e) {
     driver.start();
     new Timer(new Duration(seconds: 1), () => driver.stop());

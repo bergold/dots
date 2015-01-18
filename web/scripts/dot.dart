@@ -11,14 +11,13 @@ class DotWorld extends World {
   void setup() {
 
     var testV = new Dot('red', 10);
-    testV.p = new Vector(width / 2 - 50, -20);
-    testV.v = new Vector(0, 100);
+    testV.p = new Vector(-20, height / 2);
+    testV.v = new Vector(100, 0);
     bodies.add(testV);
 
-    var testA = new Dot('red', 10);
-    testA.p = new Vector(width / 2 + 50, 200);
-    testA.v = new Vector(50, -100);
-    testA.a = new Vector(0, 100);
+    var testA = new Dot('blue', 10);
+    testA.p = new Vector(width + 20, height / 2 + 6);
+    testA.v = new Vector(-50, 0);
     bodies.add(testA);
 
   }
@@ -50,6 +49,7 @@ class DotRender extends Render {
       window.console.log("${body.p}, ${body.v}, ${body.a}");
       var b = new DivElement();
       b.classes.add('dot');
+      b.classes.add(body.type);
       b.style.left = '${body.p.x}px';
       b.style.top = '${body.p.y}px';
       container.append(b);

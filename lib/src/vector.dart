@@ -20,6 +20,12 @@ class Vector {
 
   Vector operator + (Vector v) => new Vector(x + v.x, y + v.y);
   Vector operator - (Vector v) => new Vector(x - v.x, y - v.y);
-  Vector operator * (num s) => new Vector(x * s, y * s);
+
+  operator * (s) {
+    // Scalar product
+    if (s is Vector) return x * s.x + y * s.y;
+    // Mutiplikation with a scalar.
+    if (s is num) return new Vector(x * s, y * s);
+  }
 
 }

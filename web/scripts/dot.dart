@@ -1,4 +1,4 @@
-part of dot;
+part of dots.web;
 
 class DotWorld extends World {
 

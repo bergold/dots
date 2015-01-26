@@ -5,10 +5,15 @@ class DotWorld extends World {
   final num width;
   final num height;
 
+  final num _bumperType = 'dot-bumper';
+  final num _bumperRadius = 10;
+
   DotWorld(this.width, this.height);
 
   //@override
   void setup() {
+
+    _calcFixed(94, 78, 212, 144);
 
     var testV = new Dot('red', 10);
     testV.p = new Vector(-20, height / 2);
@@ -20,6 +25,26 @@ class DotWorld extends World {
     testA.v = new Vector(-50, 0);
     bodies.add(testA);
 
+  }
+
+  void _calcFixed(num x, num y, num w, num h) {
+    var a = w / 4;
+    var b = h / 4;
+    for (var i = 0; i < 5; i++) {
+      var oy = i * b + y;
+      var c = 5 - (i % 2);
+      for (var j = 0; j < c; j++) {
+        var ox = j * a + x;
+        if (c == 4) ox += a / 2;
+        _spawnFixed(ox, oy);
+      }
+    }
+  }
+
+  void _spawnFixed(num x, num y) {
+    var d = new Dot.fixed(_bumperType, _bumperRadius);
+    d.p = new Vector(x, y);
+    bodies.add(d);
   }
 
 }

@@ -22,7 +22,6 @@ class Collision {
   /// Applies the collision on the bodies.
   /// That means, calculating the new velocity.
   void apply() {
-    print("collide!");
     var n = body2.p - body1.p;
 
     var f1 = (body1.v * n) / (n * n);
@@ -33,8 +32,17 @@ class Collision {
     var vp2 = n * f2;
     var vs2 = body2.v - vp2;
 
-    body1.v = vs1 + vp2;
-    body2.v = vs2 + vp1;
+    if (body1.isFixed) {
+      print("collide! fixed 1");
+      body2.v = vs2 - vp2;
+    } else  if (body2.isFixed) {
+      print("collide! fixed 2");
+      body1.v = vs1 - vp1;
+    } else {
+      print("collide! moved");
+      body1.v = vs1 + vp2;
+      body2.v = vs2 + vp1;
+    }
   }
 
 }

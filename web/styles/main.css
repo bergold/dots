@@ -29,6 +29,9 @@ body {
 .dot.blue {
   background: #66b6be;
 }
+.dot.bumper {
+  background: #4f3c0f;
+}
 
 /*
   dot-color:

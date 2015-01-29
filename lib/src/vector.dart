@@ -24,7 +24,7 @@ class Vector {
   operator * (s) {
     // Scalar product
     if (s is Vector) return x * s.x + y * s.y;
-    // Mutiplikation with a scalar.
+    // Mutiplication with a scalar.
     if (s is num) return new Vector(x * s, y * s);
   }
 

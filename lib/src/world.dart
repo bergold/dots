@@ -15,7 +15,7 @@ abstract class World {
     bodies.forEach((body) {
       body.step(dt);
       // Process collisions.
-      bodies.where((b) => body != b && Collision.collides(body, b))
+      bodies.where((b) => body != b && !b.isFixed && Collision.collides(body, b))
           .map((b) => new Collision(body, b))
           .forEach((c) => c.apply());
     });

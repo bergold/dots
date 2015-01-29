@@ -4,6 +4,7 @@ library dots.web;
 
 import 'dart:html';
 import 'dart:async';
+import 'dart:math';
 
 import 'package:dots/dots.dart';
 import 'package:dots/driver.dart';

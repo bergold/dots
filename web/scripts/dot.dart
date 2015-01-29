@@ -5,7 +5,7 @@ class DotWorld extends World {
   final num width;
   final num height;
 
-  final num _bumperType = 'bumper';
+  final String _bumperType = 'bumper';
   final num _bumperRadius = 10;
 
   DotWorld(this.width, this.height);
@@ -13,17 +13,20 @@ class DotWorld extends World {
   //@override
   void setup() {
 
-    //_calcFixed(94, 78, 212, 144);
+    _calcFixed(94, 78, 212, 144);
 
-    var testV = new Dot('red', 10);
-    testV.p = new Vector(-20, height / 2);
-    testV.v = new Vector(100, 0);
-    bodies.add(testV);
+    /*var testR = new Dot('red', 10);
+    testR.p = new Vector(-20, height / 2);
+    testR.v = new Vector(100, 0);
+    bodies.add(testR);*/
 
-    var testA = new Dot.fixed('blue', 10);
-    testA.p = new Vector(width / 2, height / 2 + 6);
-    testA.v = new Vector(-50, 0);
-    bodies.add(testA);
+    var testB = new Dot('blue', 10);
+    var randg = new Random();
+    var xxx = randg.nextInt(11) - 5;
+    testB.p = new Vector(width / 2, -20);
+    testB.v = new Vector(xxx, 20);
+    testB.a = new Vector(0, 90);
+    bodies.add(testB);
 
   }
 

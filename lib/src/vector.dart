@@ -28,4 +28,8 @@ class Vector {
     if (s is num) return new Vector(x * s, y * s);
   }
 
+  Vector operator / (num s) => new Vector(x / s, y / s);
+
+  Vector get normalized => this / amount;
+
 }

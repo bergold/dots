@@ -6,7 +6,7 @@ class DotWorld extends World {
   final num height;
 
   final String _bumperType = 'bumper';
-  final num _bumperRadius = 10;
+  final num _bumperRadius = 4;
 
   DotWorld(this.width, this.height);
 
@@ -15,12 +15,12 @@ class DotWorld extends World {
 
     _calcFixed(94, 78, 212, 144);
 
-    /*var testR = new Dot('red', 10);
+    /*var testR = new Dot('red', 6);
     testR.p = new Vector(-20, height / 2);
     testR.v = new Vector(100, 0);
     bodies.add(testR);*/
 
-    var testB = new Dot('blue', 10);
+    var testB = new Dot('blue', 6);
     var randg = new Random();
     var xxx = randg.nextInt(11) - 5;
     testB.p = new Vector(width / 2, -20);
@@ -70,7 +70,7 @@ class DotRender extends Render {
   DotRender(this.container, w) : super(w);
 
   void render() {
-    container.children = [];
+    var confrag = window.document.createDocumentFragment();
 
     window.console.groupCollapsed("trigger render");
     world.bodies.forEach((body) {
@@ -80,9 +80,14 @@ class DotRender extends Render {
       b.classes.add(body.type);
       b.style.left = '${body.p.x}px';
       b.style.top = '${body.p.y}px';
-      container.append(b);
+      b.style.width = '${body.radius * 2}px';
+      b.style.height = '${body.radius * 2}px';
+      confrag.append(b);
     });
     window.console.groupEnd();
+
+    container.children = [];
+    container.append(confrag);
   }
 
 }

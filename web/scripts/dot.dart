@@ -22,10 +22,10 @@ class DotWorld extends World {
 
     var testB = new Dot('blue', 6);
     var randg = new Random();
-    var xxx = randg.nextInt(11) - 5;
-    testB.p = new Vector(width / 2, -20);
-    testB.v = new Vector(xxx, 20);
-    testB.a = new Vector(0, 90);
+    var xxx = randg.nextInt(21) - 10;
+    testB.p = new Vector(width / 2 + xxx, -20);
+    testB.v = new Vector(0, 2);
+    testB.a = new Vector(0, 10);
     bodies.add(testB);
 
   }

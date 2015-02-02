@@ -11,6 +11,8 @@ class Driver {
   Render render;
   final World world;
 
+  num timeScale = 1;
+
   Driver(this.world) {
     world.setup();
   }
@@ -35,6 +37,7 @@ class Driver {
   void _step() {
     html.window.animationFrame.then((timestamp) {
       var dt = (timestamp - _previoustimestamp) / 1000;
+      dt *= timeScale;
 
       world.step(dt);
       if (render != null) render.render();

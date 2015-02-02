@@ -30,8 +30,8 @@ abstract class Body {
   /// on the body's position for a given time difference.
   void step(num dt) {
     if (isFixed) return;
-    v = v + a * dt;
-    p = p + v * dt;
+    p = (a / 2 * dt * dt) + (v * dt) + p;
+    v = (a * dt) + v;
   }
 
 }

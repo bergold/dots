@@ -2,35 +2,42 @@ part of dots;
 
 abstract class Body {
 
-  /// True if the body can move, otherwise false.
-  final bool isFixed;
   /// The body's position [px].
-  Vector p;
+  Vector s = const Vector(0, 0);
   /// The body's velocity [px/s].
-  Vector v;
+  Vector v = const Vector(0, 0);
   /// The body's acceleration [px/s^2].
-  Vector a;
+  Vector a = const Vector(0, 0);
   /// Should return the radius of the bounding circle.
   final num radius;
 
-  Body(this.radius, {
-      this.p: const Vector(0, 0),
-      this.v: const Vector(0, 0),
-      this.a: const Vector(0, 0)
-    }) : isFixed = false;
+  Body(this.radius);
 
-  Body.fixed(this.radius, {
-      this.p: const Vector(0, 0)
-    }) :
-      isFixed = true,
-      v = const Vector(0, 0),
-      a = const Vector(0, 0);
+  void step(num dt);
+
+}
+
+class FixedBody extends Body {
+
+  /// The body's velocity [px/s].
+  final Vector v = const Vector(0, 0);
+  /// The body's acceleration [px/s^2].
+  final Vector a = const Vector(0, 0);
+
+  FixedBody(r) : super(r);
+
+  void step(num dt) {}
+
+}
+
+class DynamicBody extends Body {
+
+  DynamicBody(r) : super(r);
 
   /// Applies the velocity and acceleration
   /// on the body's position for a given time difference.
   void step(num dt) {
-    if (isFixed) return;
-    p = (a / 2 * dt * dt) + (v * dt) + p;
+    s = (a / 2 * dt * dt) + (v * dt) + s;
     v = (a * dt) + v;
   }
 

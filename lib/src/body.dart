@@ -8,6 +8,8 @@ abstract class Body {
   Vector v = const Vector(0, 0);
   /// The body's acceleration [px/s^2].
   Vector a = const Vector(0, 0);
+  /// The coefficient of restitution.
+  final num k = 1;
   /// Should return the radius of the bounding circle.
   final num radius;
 

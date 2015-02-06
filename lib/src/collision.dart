@@ -34,17 +34,22 @@ class Collision {
     var vp2 = n * f2;
     var vs2 = body2.v - vp2;
 
+    var k = (body1.k + body2.k) / 2;
+
     if (body1 is FixedBody) {
       print("collide! fixed 1");
-      body2.v = vs2 - vp2;
+      body2.v = vs2 - vp2 * k;
     } else  if (body2 is FixedBody) {
       print("collide! fixed 2");
-      body1.v = vs1 - vp1;
+      body1.v = vs1 - vp1 * k;
     } else {
       print("collide! moved");
-      body1.v = vs1 + vp2;
-      body2.v = vs2 + vp1;
+      body1.v = vs1 + _oneDimensionalCollision(vp1, vp2, k);
+      body2.v = vs2 + _oneDimensionalCollision(vp2, vp1, k);
     }
   }
+
+  /// Provides the math for a one dimensional collision.
+  Vector _oneDimensionalCollision(v1, v2, k) => (v1 + v2 - (v1 - v2) * k) / 2;
 
 }

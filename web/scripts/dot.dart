@@ -5,8 +5,6 @@ class DotWorld extends World {
   final num width;
   final num height;
 
-  final num _bumperRadius = 4;
-
   DotWorld(this.width, this.height);
 
   //@override
@@ -19,7 +17,7 @@ class DotWorld extends World {
     testR.v = new Vector(100, 0);
     bodies.add(testR);*/
 
-    var testB = new Dot('blue', 6);
+    var testB = new Dot('blue');
     var randg = new Random();
     var xxx = randg.nextInt(101) - 50;
     testB.s = new Vector(width / 2 + xxx, -20);
@@ -44,7 +42,7 @@ class DotWorld extends World {
   }
 
   void _spawnBumper(num x, num y) {
-    var d = new Bumper(_bumperRadius);
+    var d = new Bumper();
     d.s = new Vector(x, y);
     bodies.add(d);
   }
@@ -67,18 +65,26 @@ class DotWorld extends World {
 
 class Dot extends DynamicBody {
 
+  static const defaultRadius = 6;
+
   /// The dot's type.
   final String type;
+  /// The coefficient of restitution.
+  final num k = 0.25;
 
-  Dot(this.type, r) : super(r);
+  Dot(this.type) : super(defaultRadius);
 
 }
 
 class Bumper extends FixedBody {
 
-  final String type = 'bumper';
+  static const defaultRadius = 4;
 
-  Bumper(r) : super(r);
+  final String type = 'bumper';
+  /// The coefficient of restitution.
+  final num k = 0.25;
+
+  Bumper() : super(defaultRadius);
 
 }
 

@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-pub get
-pub build
-
 cd build/web
 git init
 git config user.name "Drone.io"

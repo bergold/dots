@@ -10,5 +10,4 @@ git config user.name "Drone.io"
 git config user.email "emil.bergold@outlook.com"
 git add .
 git commit -m "Deploy to GitHub Pages"
-#git push --force --verbose "https://${GITHUB_AUTH}@${DRONE_REPO_SLUG}.git" master:gh-pages
-git push --force --verbose "https://${DRONE_REPO_SLUG}.git" master:gh-pages
+git push --force "https://${GITHUB_AUTH}@${DRONE_REPO_SLUG}.git" master:gh-pages

@@ -49,6 +49,20 @@ class DotWorld extends World {
     bodies.add(d);
   }
 
+  /// Scales the [box] so that it fits into the [container].
+  Map containLayout(Map container, Map box) {
+    var k1 = container['h'] / container['w'];
+    var k2 = box['h'] / box['w'];
+    if (k1 < k2) {
+      box['h'] = container['h'];
+      box['w'] = box['h'] / k2;
+    } else {
+      box['w'] = container['w'];
+      box['h'] = box['w'] * k2;
+    }
+    return box;
+  }
+
 }
 
 class Dot extends DynamicBody {

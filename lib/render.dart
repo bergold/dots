@@ -16,6 +16,8 @@ abstract class ChangeRender extends Render {
 
   List bodyhash;
 
+  ChangeRender(world) : super(world);
+
   void render() {
 
   }

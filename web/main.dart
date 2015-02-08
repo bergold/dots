@@ -22,8 +22,7 @@ void main() {
 
   var render = new CanvasDotRender(elmWorld, world);
 
-  var driver = new Driver(world);
-  driver.render = render;
+  var driver = new Driver(world, render);
 
   querySelector('#btn1').onClick.listen((e) => driver.start());
   querySelector('#btn2').onClick.listen((e) => driver.stop());

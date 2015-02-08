@@ -13,8 +13,9 @@ class Driver {
 
   num timeScale = 1;
 
-  Driver(this.world) {
+  Driver(this.world, [this.render]) {
     world.setup();
+    if (render != null) render.render();
   }
 
   void start() {

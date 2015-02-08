@@ -20,10 +20,7 @@ abstract class World {
       body.step(dt);
       remaining.remove(body);
       // Process collisions.
-      // But only for dynamic bodies.
-      //if (body is DynamicBody) {
-        remaining.forEach((b) => collisionCtrl.process(body, b));
-      //}
+      remaining.forEach((b) => collisionCtrl.process(body, b));
     });
   }
 

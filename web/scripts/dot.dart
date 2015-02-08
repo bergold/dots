@@ -7,15 +7,10 @@ class DotWorld extends World {
 
   DotWorld(this.width, this.height);
 
-  //@override
+  @override
   void setup() {
 
     _calcBumper(94, 78, 212, 144);
-
-    /*var testR = new Dot('red', 6);
-    testR.p = new Vector(-20, height / 2);
-    testR.v = new Vector(100, 0);
-    bodies.add(testR);*/
 
     var testB = new Dot('blue');
     var randg = new Random();

@@ -38,9 +38,6 @@ class Collision {
     // of their radius.
     var s = body2.s - body1.s;
     if (s.amount > (body1.radius + body2.radius)) return false;
-    // They don't collide if they move in different directions.
-    //var s2 = s + (body2.v.normalized - body1.v.normalized);
-    //if (s.amount < s2.amount) return false;
     return true;
   }
 

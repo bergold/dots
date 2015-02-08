@@ -108,7 +108,7 @@ class CanvasDotRender extends Render {
   final DotWorld world;
   CanvasRenderingContext2D ctx;
 
-  CanvasDotRender(this.canvas, w) : world = w, super(w) {
+  CanvasDotRender(this.canvas, DotWorld w) : world = w, super(w) {
     ctx = canvas.getContext('2d');
   }
 

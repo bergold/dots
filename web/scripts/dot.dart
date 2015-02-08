@@ -97,9 +97,7 @@ class DotRender extends Render {
   void render() {
     var confrag = window.document.createDocumentFragment();
 
-    window.console.groupCollapsed("trigger render");
     world.bodies.forEach((body) {
-      window.console.log("${body.s}, ${body.v}, ${body.a}");
       var b = new DivElement();
       b.classes.add('dot');
       b.classes.add(body.type);
@@ -109,7 +107,6 @@ class DotRender extends Render {
       b.style.height = '${body.radius * 2}px';
       confrag.append(b);
     });
-    window.console.groupEnd();
 
     container.children = [];
     container.append(confrag);

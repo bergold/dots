@@ -120,29 +120,3 @@ class CanvasDotRender extends Render {
   }
 
 }
-
-class DotRender extends Render {
-
-  final HtmlElement container;
-
-  DotRender(this.container, w) : super(w);
-
-  void render() {
-    var confrag = window.document.createDocumentFragment();
-
-    world.bodies.forEach((body) {
-      var b = new DivElement();
-      b.classes.add('dot');
-      b.classes.add(body.type);
-      b.style.left = '${body.s.x}px';
-      b.style.top = '${body.s.y}px';
-      b.style.width = '${body.radius * 2}px';
-      b.style.height = '${body.radius * 2}px';
-      confrag.append(b);
-    });
-
-    container.children = [];
-    container.append(confrag);
-  }
-
-}

@@ -12,7 +12,7 @@ class DotWorld extends World {
 
     _calcBumper(94, 78, 212, 144);
 
-    var testB = new Dot('blue');
+    var testB = new Dot('blue', '#eaaa58');
     var randg = new Random();
     var xxx = randg.nextInt(101) - 50;
     testB.s = new Vector(width / 2 + xxx, -20);
@@ -58,28 +58,66 @@ class DotWorld extends World {
 
 }
 
-class Dot extends DynamicBody {
+class Dot extends DynamicBody with CanvasDot {
 
   static const defaultRadius = 6;
 
   /// The dot's type.
   final String type;
+  final String color;
   /// The coefficient of restitution.
   final num k = 0.25;
 
-  Dot(this.type) : super(defaultRadius);
+  Dot(this.type, this.color) : super(defaultRadius);
 
 }
 
-class Bumper extends FixedBody {
+class Bumper extends FixedBody with CanvasDot {
 
   static const defaultRadius = 4;
 
   final String type = 'bumper';
+  final String color = '#4f3c0f';
   /// The coefficient of restitution.
   final num k = 0.25;
 
   Bumper() : super(defaultRadius);
+
+}
+
+abstract class CanvasDot {
+
+  //Vector s;
+  //num radius;
+  String color = 'black';
+
+  void draw(CanvasRenderingContext2D ctx) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, radius, 0, 2 * PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.restore();
+  }
+
+}
+
+class CanvasDotRender extends Render {
+
+  final CanvasElement canvas;
+  final DotWorld world;
+  CanvasRenderingContext2D ctx;
+
+  CanvasDotRender(this.canvas, w) : world = w, super(w) {
+    ctx = canvas.getContext('2d');
+  }
+
+  void render() {
+    // Clean.
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Draw all bodies.
+    world.bodies.forEach((b) => (b as CanvasDot).draw(ctx));
+  }
 
 }
 

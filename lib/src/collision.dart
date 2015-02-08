@@ -1,5 +1,28 @@
 part of dots;
 
+class CollisionController {
+
+  final List<Collision> collisions = new List<Collision>();
+
+  void process(Body body1, Body body2) {
+    if (!Collision.collides(body1, body2)) return;
+    if (hasCollision(body1, body2)) return;
+    var c = new Collision(body1, body2);
+    c.apply();
+    collisions.add(c);
+  }
+
+  void clean() => collisions.retainWhere((c) => Collision.collides(c.body1, c.body2));
+
+  /// Return true if a collision between [body1] and [body2] is stored in
+  /// [collisions]
+  bool hasCollision(body1, body2) {
+    var cc = collisions.where((c) => (c.body1 == body1 && c.body2 == body2) || (c.body1 == body2 && c.body2 == body1));
+    return cc.isNotEmpty;
+  }
+
+}
+
 class Collision {
 
   final Body body1;
@@ -16,8 +39,8 @@ class Collision {
     var s = body2.s - body1.s;
     if (s.amount > (body1.radius + body2.radius)) return false;
     // They don't collide if they move in different directions.
-    var s2 = s + (body2.v.normalized - body1.v.normalized);
-    if (s.amount < s2.amount) return false;
+    //var s2 = s + (body2.v.normalized - body1.v.normalized);
+    //if (s.amount < s2.amount) return false;
     return true;
   }
 

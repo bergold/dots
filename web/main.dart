@@ -15,10 +15,12 @@ part 'scripts/dot.dart';
 void main() {
 
   var elmWorld = querySelector('#world');
-  elmWorld.width = 400;
-  elmWorld.height = 300;
+  var w = elmWorld.clientWidth;
+  var h = elmWorld.clientHeight;
+  elmWorld.width = w;
+  elmWorld.height = h;
 
-  var world = new DotWorld(400, 300);
+  var world = new DotWorld(w, h);
 
   var render = new CanvasDotRender(elmWorld, world);
 

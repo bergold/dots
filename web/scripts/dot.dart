@@ -10,12 +10,24 @@ class DotWorld extends World {
   @override
   void setup() {
 
-    _calcBumper(94, 78, 212, 144);
+    var viewBox = { 'w': width, 'h': height };
+
+    var paddingBox = maxsizeLayout(new Map.from(viewBox), maxw: 400, maxh: 300);
+
+    paddingBox['w'] -= 188;
+    paddingBox['h'] -= 156;
+
+    var dotsBox = { 'w': 212, 'h': 144 };
+
+    dotsBox = containLayout(paddingBox, dotsBox);
+    dotsBox = centerLayout(viewBox, dotsBox);
+
+    _calcBumper(dotsBox['x'], dotsBox['y'], dotsBox['w'], dotsBox['h']);
 
     var testB = new Dot('blue', '#eaaa58');
     var randg = new Random();
-    //var xxx = randg.nextInt(101) - 50;
-    var xxx = 0;
+    var xxx = randg.nextInt(101) - 50;
+    //var xxx = 0;
     testB.s = new Vector(width / 2 + xxx, -20);
     testB.v = new Vector(0, 0);
     testB.a = new Vector(0, 100);
@@ -54,6 +66,21 @@ class DotWorld extends World {
       box['w'] = container['w'];
       box['h'] = box['w'] * k2;
     }
+    return box;
+  }
+
+  /// Crops if the size of [box] is bigger than [maxw] or [maxh].
+  /// It doesn't maintain aspect ratio,
+  Map maxsizeLayout(Map box, { maxw, maxh }) {
+    if (maxw != null && box['w'] > maxw) box['w'] = maxw;
+    if (maxh != null && box['h'] > maxh) box['h'] = maxh;
+    return box;
+  }
+
+  /// Algins [box] in the center of [container].
+  Map centerLayout(Map container, Map box) {
+    box['x'] = (container['w'] - box['w']) / 2;
+    box['y'] = (container['h'] - box['h']) / 2;
     return box;
   }
 

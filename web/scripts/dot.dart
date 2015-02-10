@@ -14,7 +14,8 @@ class DotWorld extends World {
 
     var testB = new Dot('blue', '#eaaa58');
     var randg = new Random();
-    var xxx = randg.nextInt(101) - 50;
+    //var xxx = randg.nextInt(101) - 50;
+    var xxx = 0;
     testB.s = new Vector(width / 2 + xxx, -20);
     testB.v = new Vector(0, 0);
     testB.a = new Vector(0, 100);

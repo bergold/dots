@@ -14,7 +14,7 @@ abstract class World {
 
   void step(num dt) {
     var remaining = new List.from(bodies);
-    collisionCtrl.clean();
+    collisionCtrl.step();
 
     bodies.forEach((body) {
       body.step(dt);

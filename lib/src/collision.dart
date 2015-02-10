@@ -9,10 +9,14 @@ class CollisionController {
     if (hasCollision(body1, body2)) return;
     var c = new Collision(body1, body2);
     c.apply();
+    c.applyNormalForce();
     collisions.add(c);
   }
 
-  void clean() => collisions.retainWhere((c) => Collision.collides(c.body1, c.body2));
+  void step() {
+    collisions..retainWhere((c) => Collision.collides(c.body1, c.body2))
+      ..forEach((c) => c.applyNormalForce());
+  }
 
   /// Return true if a collision between [body1] and [body2] is stored in
   /// [collisions]
@@ -68,5 +72,22 @@ class Collision {
 
   /// Provides the math for a one dimensional collision.
   Vector _oneDimensionalCollision(v1, v2, k) => (v1 + v2 - (v1 - v2) * k) / 2;
+
+  /// Applies the normal force's acceleration.
+  void applyNormalForce() {
+    var bd;
+    if (body1 is DynamicBody && body2 is FixedBody) {
+      bd = body1;
+    } else if (body2 is DynamicBody && body1 is FixedBody) {
+      bd = body2;
+    } else return;
+    var n = body2.s - body1.s;
+
+    var f = (bd.a * n) / (n * n);
+    var ap = n * f;
+
+    var an = ap * -1;
+    bd.accelerate(an);
+  }
 
 }

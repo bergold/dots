@@ -73,6 +73,7 @@ class DotWorld extends World {
       var p = randomPointInRect(_dropBox);
       var dot = new Dot(_randomDotColor());
       dot.s = new Vector(p['x'], p['y']);
+      dot.v = _randomDotV();
       dot.a = _dotA;
       bodies.add(dot);
     }
@@ -81,6 +82,13 @@ class DotWorld extends World {
   /// Returns a random color out of the list [dotColors].
   String _randomDotColor() {
     return (dotColors..shuffle(_randomizer)).first;
+  }
+
+  /// Returns a random Vector to use as a start velocity.
+  Vector _randomDotV() {
+    var r = { 'x': -25, 'y': -25, 'w': 50, 'h': 50 };
+    var p = randomPointInRect(r);
+    return new Vector(p['x'], p['y']);
   }
 
   /// Scales the [box] so that it fits into the [container].

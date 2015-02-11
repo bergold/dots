@@ -6,34 +6,29 @@ body {
   padding: 0;
 }
 
-.container {
-  position: relative;
+main {
   box-sizing: border-box;
   width: 100vw;
-  height: calc(100vh - 100px);
+  height: 100vh;
   overflow: hidden;
 }
-.container canvas {
+main canvas {
   width: 100%;
   height: 100%;
   background-color: #aa4949;
 }
 
-.dot {
+footer {
   position: absolute;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-.dot.red {
-  background: #eaaa58;
-}
-.dot.blue {
-  background: #66b6be;
-}
-.dot.bumper {
-  background: #4f3c0f;
-}
 
 /*
   dot-color:

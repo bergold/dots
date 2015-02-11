@@ -35,11 +35,11 @@ class DotWorld extends World {
       'h': 100
     };
 
-    _calcBumper(dotsBox['x'], dotsBox['y'], dotsBox['w'], dotsBox['h']);
+    _alignBumpers(dotsBox['x'], dotsBox['y'], dotsBox['w'], dotsBox['h']);
 
   }
 
-  void _calcBumper(num x, num y, num w, num h) {
+  void _alignBumpers(num x, num y, num w, num h) {
     var a = w / 4;
     var b = h / 4;
     for (var i = 0; i < 5; i++) {
@@ -48,12 +48,12 @@ class DotWorld extends World {
       for (var j = 0; j < c; j++) {
         var ox = j * a + x;
         if (c == 4) ox += a / 2;
-        _spawnBumper(ox, oy);
+        _addBumper(ox, oy);
       }
     }
   }
 
-  void _spawnBumper(num x, num y) {
+  void _addBumper(num x, num y) {
     var d = new Bumper();
     d.s = new Vector(x, y);
     bodies.add(d);

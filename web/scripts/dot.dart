@@ -70,7 +70,7 @@ class DotWorld extends World {
   void drop([int n = 1]) {
     for (var i = 0; i < n; i++) {
       var p = randomPointInRect(_dropBox);
-      var dot = new Dot('blue', '#eaaa58');
+      var dot = new Dot('#eaaa58');
       dot.s = new Vector(p['x'], p['y']);
       dot.a = _dotA;
       bodies.add(dot);
@@ -125,13 +125,12 @@ class Dot extends DynamicBody with CanvasDot {
 
   static const defaultRadius = 6;
 
-  /// The dot's type.
-  final String type;
+  /// The dot's color.
   final String color;
   /// The coefficient of restitution.
   final num k = 0.25;
 
-  Dot(this.type, this.color) : super(defaultRadius);
+  Dot(this.color) : super(defaultRadius);
 
 }
 
@@ -139,7 +138,6 @@ class Bumper extends FixedBody with CanvasDot {
 
   static const defaultRadius = 4;
 
-  final String type = 'bumper';
   final String color = '#4f3c0f';
   /// The coefficient of restitution.
   final num k = 0.25;

@@ -10,6 +10,7 @@ class DotWorld extends World {
 
   /// The acceleration that is applyed to all moving dots.
   final Vector _dotA = const Vector(0, 100);
+  List<String> dotColors = ['#eaaa58', '#66b6be', '#e6d2c2'];
   final int _blackhole = 100;
 
   DotWorld(this.width, this.height);
@@ -70,11 +71,16 @@ class DotWorld extends World {
   void drop([int n = 1]) {
     for (var i = 0; i < n; i++) {
       var p = randomPointInRect(_dropBox);
-      var dot = new Dot('#eaaa58');
+      var dot = new Dot(_randomDotColor());
       dot.s = new Vector(p['x'], p['y']);
       dot.a = _dotA;
       bodies.add(dot);
     }
+  }
+
+  /// Returns a random color out of the list [dotColors].
+  String _randomDotColor() {
+    return (dotColors..shuffle(_randomizer)).first;
   }
 
   /// Scales the [box] so that it fits into the [container].

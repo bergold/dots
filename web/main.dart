@@ -36,4 +36,10 @@ void main() {
     new Timer(new Duration(seconds: 1), () => driver.stop());
   });
 
+  window.onResize.listen((evt) {
+    world.width = elmWorld.width = elmWorld.clientWidth;
+    world.height = elmWorld.height = elmWorld.clientHeight;
+    driver.reset();
+  });
+
 }

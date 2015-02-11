@@ -2,8 +2,8 @@ part of dots.web;
 
 class DotWorld extends World {
 
-  final num width;
-  final num height;
+  num width;
+  num height;
 
   Map _dropBox;
   Random _randomizer = new Random();

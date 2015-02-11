@@ -20,10 +20,10 @@ class DotWorld extends World {
 
     var viewBox = { 'w': width, 'h': height };
 
-    var paddingBox = maxsizeLayout(new Map.from(viewBox), maxw: 400, maxh: 300);
+    var paddingBox = maxsizeLayout(new Map.from(viewBox), maxw: 292, maxh: 224);
 
-    paddingBox['w'] -= 188;
-    paddingBox['h'] -= 156;
+    paddingBox['w'] -= 80;
+    paddingBox['h'] -= 80;
 
     var dotsBox = { 'w': 212, 'h': 144 };
 

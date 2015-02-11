@@ -10,6 +10,7 @@ class DotWorld extends World {
 
   /// The acceleration that is applyed to all moving dots.
   final Vector _dotA = const Vector(0, 100);
+  final int _blackhole = 100;
 
   DotWorld(this.width, this.height);
 
@@ -37,6 +38,13 @@ class DotWorld extends World {
 
     _alignBumpers(dotsBox['x'], dotsBox['y'], dotsBox['w'], dotsBox['h']);
 
+  }
+
+  @override
+  void step(num dt) {
+    var bh = height + _blackhole;
+    bodies.removeWhere((b) => b.s.y > bh);
+    super.step(dt);
   }
 
   void _alignBumpers(num x, num y, num w, num h) {

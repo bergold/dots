@@ -33,6 +33,7 @@ class Driver {
   void reset() {
     stop();
     world.reset();
+    if (render != null) render.render();
   }
 
   void _step() {

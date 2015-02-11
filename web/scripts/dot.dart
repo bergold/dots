@@ -5,6 +5,12 @@ class DotWorld extends World {
   final num width;
   final num height;
 
+  Map _dropBox;
+  Random _randomizer = new Random();
+
+  /// The acceleration that is applyed to all moving dots.
+  final Vector _dotA = const Vector(0, 100);
+
   DotWorld(this.width, this.height);
 
   @override
@@ -22,16 +28,14 @@ class DotWorld extends World {
     dotsBox = containLayout(paddingBox, dotsBox);
     dotsBox = centerLayout(viewBox, dotsBox);
 
-    _calcBumper(dotsBox['x'], dotsBox['y'], dotsBox['w'], dotsBox['h']);
+    _dropBox = {
+      'x': dotsBox['x'],
+      'y': -150,
+      'w': dotsBox['w'],
+      'h': 100
+    };
 
-    var testB = new Dot('blue', '#eaaa58');
-    var randg = new Random();
-    var xxx = randg.nextInt(101) - 50;
-    //var xxx = 0;
-    testB.s = new Vector(width / 2 + xxx, -20);
-    testB.v = new Vector(0, 0);
-    testB.a = new Vector(0, 100);
-    bodies.add(testB);
+    _calcBumper(dotsBox['x'], dotsBox['y'], dotsBox['w'], dotsBox['h']);
 
   }
 
@@ -53,6 +57,16 @@ class DotWorld extends World {
     var d = new Bumper();
     d.s = new Vector(x, y);
     bodies.add(d);
+  }
+
+  void drop([int n = 1]) {
+    for (var i = 0; i < n; i++) {
+      var p = randomPointInRect(_dropBox);
+      var dot = new Dot('blue', '#eaaa58');
+      dot.s = new Vector(p['x'], p['y']);
+      dot.a = _dotA;
+      bodies.add(dot);
+    }
   }
 
   /// Scales the [box] so that it fits into the [container].
@@ -82,6 +96,19 @@ class DotWorld extends World {
     box['x'] = (container['w'] - box['w']) / 2;
     box['y'] = (container['h'] - box['h']) / 2;
     return box;
+  }
+
+  /// Returns random x and y coordinates for a point, that is in
+  /// the bounding [rect]
+  Map randomPointInRect(Map rect) {
+    var xmin = rect['x'];
+    var xmax = rect['x'] + rect['w'] +1;
+    var ymin = rect['y'];
+    var ymax = rect['y'] + rect['h'] +1;
+    var p = { 'X': 0, 'y': 0 };
+    p['x'] = _randomizer.nextInt(xmax - xmin) + xmin;
+    p['y'] = _randomizer.nextInt(ymax - ymin) + ymin;
+    return p;
   }
 
 }

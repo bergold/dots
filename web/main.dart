@@ -12,7 +12,18 @@ import 'package:dots/render.dart';
 
 part 'scripts/dot.dart';
 
+Map<String, bool> flags = {
+  'beta': false,
+  'stats': false,
+  'log': false,
+  'log-verbose': false,
+  'show-velocities': false,
+  'show-accelerations': false
+};
+
 void main() {
+
+  initFlags();
 
   var elmWorld = querySelector('#world');
   var w = elmWorld.clientWidth;
@@ -42,4 +53,14 @@ void main() {
     driver.reset();
   });
 
+}
+
+void initFlags() {
+  var str = window.location.search.replaceFirst('?', '');
+  if (str.isNotEmpty) {
+    str.split(',').forEach((flag) {
+      flags[flag] = true;
+      print('set flag $flag');
+    });
+  }
 }

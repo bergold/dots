@@ -39,6 +39,10 @@ void main() {
 
   var driver = new Driver(world, render);
 
+  if (flags['log-verbose']) {
+    driver.onStep.listen((dt) => print('[driver] step $dt'));
+  }
+
   querySelector('#btn1').onClick.listen((e) => driver.start());
   querySelector('#btn2').onClick.listen((e) => driver.stop());
   querySelector('#btn3').onClick.listen((e) => world.drop());
@@ -65,4 +69,5 @@ void initFlags() {
       if (flag.isNotEmpty && flags.containsKey(flag)) flags[flag] = true;
     });
   }
+  if (flags['log-verbose']) flags['log'] = true;
 }

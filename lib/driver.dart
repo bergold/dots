@@ -1,6 +1,7 @@
 library dots.driver;
 
 import 'dart:html' as html;
+import 'dart:async';
 import 'package:dots/dots.dart';
 import 'package:dots/render.dart';
 
@@ -10,6 +11,8 @@ class Driver {
   num _previoustimestamp = -1;
   Render render;
   final World world;
+  StreamController _onStepCtrl = new StreamController();
+  Stream get onStep => _onStepCtrl.stream;
 
   num timeScale = 1;
 
@@ -43,6 +46,7 @@ class Driver {
 
       world.step(dt);
       if (render != null) render.render();
+      _onStepCtrl.add(dt);
 
       _previoustimestamp = timestamp;
       if (_running) _step();

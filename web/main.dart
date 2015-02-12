@@ -11,9 +11,11 @@ import 'package:dots/driver.dart';
 import 'package:dots/render.dart';
 
 part 'scripts/dot.dart';
+part 'scripts/debugconsole.dart';
 
 Map<String, bool> flags = {
   'beta': false,
+  'debug': false,
   'stats': false,
   'log': false,
   'log-verbose': false,
@@ -25,7 +27,8 @@ void main() {
 
   initFlags();
 
-  print('set flags: ' + flags.keys.where((flag) => flags[flag]).join(' '));
+  var activeFlags = flags.keys.where((flag) => flags[flag]);
+  if (activeFlags.isNotEmpty) print('active flags: ' + activeFlags.join(' '));
 
   var elmWorld = querySelector('#world');
   var w = elmWorld.clientWidth;
@@ -43,15 +46,9 @@ void main() {
     driver.onStep.listen((dt) => print('[driver] step $dt'));
   }
 
-  querySelector('#btn1').onClick.listen((e) => driver.start());
-  querySelector('#btn2').onClick.listen((e) => driver.stop());
-  querySelector('#btn3').onClick.listen((e) => world.drop());
-  querySelector('#btn4').onClick.listen((e) => world.drop(20));
-  querySelector('#btn5').onClick.listen((e) => world.reset());
-  querySelector('#btn6').onClick.listen((e) {
-    driver.start();
-    new Timer(new Duration(seconds: 1), () => driver.stop());
-  });
+  if (flags['debug']) {
+    initDebugConsole(world, driver);
+  }
 
   window.onResize.listen((evt) {
     world.width = elmWorld.width = elmWorld.clientWidth;
@@ -62,7 +59,7 @@ void main() {
 }
 
 void initFlags() {
-  var str = window.location.search.replaceFirst('?', '').toLowerCase();
+  var str = Uri.decodeComponent(window.location.search).replaceFirst('?', '').toLowerCase();
   if (str.isNotEmpty) {
     str.split(',').forEach((flag) {
       flag = flag.trim();

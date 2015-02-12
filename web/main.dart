@@ -25,6 +25,8 @@ void main() {
 
   initFlags();
 
+  print('set flags: ' + flags.keys.where((flag) => flags[flag]).join(' '));
+
   var elmWorld = querySelector('#world');
   var w = elmWorld.clientWidth;
   var h = elmWorld.clientHeight;
@@ -56,11 +58,11 @@ void main() {
 }
 
 void initFlags() {
-  var str = window.location.search.replaceFirst('?', '');
+  var str = window.location.search.replaceFirst('?', '').toLowerCase();
   if (str.isNotEmpty) {
     str.split(',').forEach((flag) {
-      flags[flag] = true;
-      print('set flag $flag');
+      flag = flag.trim();
+      if (flag.isNotEmpty && flags.containsKey(flag)) flags[flag] = true;
     });
   }
 }

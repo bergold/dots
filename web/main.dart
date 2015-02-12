@@ -15,7 +15,7 @@ part 'scripts/debugconsole.dart';
 
 Map<String, bool> flags = {
   'beta': false,
-  'debug': false,
+  'debug': true,
   'stats': false,
   'log': false,
   'log-verbose': false,

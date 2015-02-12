@@ -30,15 +30,15 @@ void main() {
   var activeFlags = flags.keys.where((flag) => flags[flag]);
   if (activeFlags.isNotEmpty) print('active flags: ' + activeFlags.join(' '));
 
-  var elmWorld = querySelector('#world');
-  var w = elmWorld.clientWidth;
-  var h = elmWorld.clientHeight;
-  elmWorld.width = w;
-  elmWorld.height = h;
+  var canvasWorld = querySelector('#world');
+  var w = canvasWorld.clientWidth;
+  var h = canvasWorld.clientHeight;
+  canvasWorld.width = w;
+  canvasWorld.height = h;
 
   var world = new DotWorld(w, h);
 
-  var render = new CanvasDotRender(elmWorld, world);
+  var render = new CanvasDotRender(canvasWorld, world);
 
   var driver = new Driver(world, render);
 
@@ -51,8 +51,8 @@ void main() {
   }
 
   window.onResize.listen((evt) {
-    world.width = elmWorld.width = elmWorld.clientWidth;
-    world.height = elmWorld.height = elmWorld.clientHeight;
+    world.width = canvasWorld.width = canvasWorld.clientWidth;
+    world.height = canvasWorld.height = canvasWorld.clientHeight;
     driver.reset();
   });
 

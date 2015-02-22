@@ -16,20 +16,55 @@
 
   <body>
 
-    <main>
-      <canvas id="world"></canvas>
-    </main>
+    <div class="container">
+      <main>
+        <canvas id="world"></canvas>
+      </main>
 
-    <footer>
-      <div id="debugconsole" hidden>
-        <button id="btn1">Start</button>
-        <button id="btn2">Stop</button>
-        <button id="btn3">Drop(1)</button>
-        <button id="btn4">Drop(20)</button>
-        <button id="btn5">Reset</button>
-        <button id="btn6">1 sec</button>
-      </div>
-    </footer>
+      <aside hidden>
+        <div id="stats" hidden></div>
+        <div id="debugconsole" hidden>
+          <h2>Driver</h2>
+          <section>
+            <button id="driver_start">Start</button>
+            <button id="driver_stop">Stop</button>
+            <button id="driver_reset">Reset</button>
+            <button id="driver_1sec">1 sec</button>
+          </section>
+          <h2>World</h2>
+          <section>
+            <input type="number" id="world_drop_n_count" value="1">
+            <button id="world_drop_n">Drop</button>
+          </section>
+          <section>
+            s: <input type="number" id="world_drop_custom_sx" placeholder="x">
+               <input type="number" id="world_drop_custom_sy" placeholder="y">
+            v: <input type="number" id="world_drop_custom_vx" placeholder="x">
+               <input type="number" id="world_drop_custom_vy" placeholder="y">
+            a: <input type="number" id="world_drop_custom_ax" placeholder="x">
+               <input type="number" id="world_drop_custom_ay" placeholder="y">
+            <button id="world_drop_custom">Drop</button>
+          </section>
+          <section>
+            <button id="world_reset">Reset</button>
+          </section>
+          <h2>Flags</h2>
+          <section>
+            <input type="checkbox" id="flags_beta"> beta
+            <input type="checkbox" id="flags_debug"> debug
+            <input type="checkbox" id="flags_stats"> stats
+            <input type="checkbox" id="flags_log"> log
+            <input type="checkbox" id="flags_logverbose"> log-verbose
+            <input type="checkbox" id="flags_showvelocities"> show-velocities
+            <input type="checkbox" id="flags_showaccelerations"> show-accelerations
+            <button id="flags_reload">Reload</button>
+          </section>
+        </div>
+      </aside>
+
+      <footer>
+      </footer>
+    </div>
 
     <script type="application/dart" src="main.dart"></script>
     <script type="application/javascript" src="packages/browser/dart.js"></script>

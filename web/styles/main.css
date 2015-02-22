@@ -18,16 +18,16 @@ main canvas {
   background-color: #aa4949;
 }
 
-footer {
+aside {
   position: absolute;
   box-sizing: border-box;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  top: 0;
+  right: 0;
+  width: 192px;
+  height: 100%;
   padding: 10px;
-  white-space: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
